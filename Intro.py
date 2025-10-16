@@ -1,87 +1,123 @@
 import streamlit as st
 from PIL import Image
-st.title("Aplicaciones de Inteligencia Artificial.")
 
+# --- CONFIGURACIÓN INICIAL ---
+st.set_page_config(
+    page_title="BAE | Baby App Especializada",
+    page_icon="👶",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# --- ESTILO PERSONALIZADO (colores BAE) ---
+st.markdown("""
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #2E2E2E;
+        }
+        [data-testid="stSidebar"] {
+            background-color: #F0F7FF;
+            border-right: 1px solid #CCE0FF;
+        }
+        h1, h2, h3, h4 {
+            color: #5271FF;
+            font-family: 'Poppins', sans-serif;
+        }
+        .stButton>button {
+            background-color: #5271FF;
+            color: white;
+            border-radius: 10px;
+            height: 2.5em;
+            width: 100%;
+            border: none;
+        }
+        .stButton>button:hover {
+            background-color: #6F8BFF;
+        }
+        .small-text {
+            font-size: 15px;
+            color: #666;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# --- ENCABEZADO ---
+st.title("👶 BAE | Portafolio de Experiencias Inteligentes")
+st.markdown(
+    "### Una aplicación diseñada para el **cuidado y desarrollo de tu bebé**, "
+    "donde la tecnología se combina con el amor y la ciencia para ofrecer bienestar desde los primeros días de vida."
+)
+
+# --- SIDEBAR ---
 with st.sidebar:
-  st.subheader("Aplicaciones con Inteligencia Artificial.")
-  parrafo = (
-    "La inteligencia artificial permite mejorar la toma de decisiones con el uso de datos, "
-    "automatizar tareas rutinarias y proporcionar análisis avanzados en tiempo real, lo que "
-    "resulta en una mayor eficiencia y precisión en diversos campos."
-  )
-  st.write(parrafo)
+    st.image("bebeFeliz.png", width=120)
+    st.subheader("Sobre BAE 💧")
+    st.write(
+        "BAE (Baby Ambient Environment) integra sensores IoT, inteligencia artificial y blockchain "
+        "para ofrecer un monitoreo ambiental seguro, ético y trazable que ayuda a cuidar la salud "
+        "de los bebés en sus primeros meses de vida."
+    )
 
-url_ia="https://sites.google.com/view/aplicacionesdeia/inicio"
-st.subheader("En el siguiente enlace puedes encontrar páginas y ejercicios prácticos")
-st.write(f"Enlace para páginas y ejercicios: [Enlace]({url_ia})")
+    st.markdown("---")
+    st.write("**Explora nuestras experiencias digitales:**")
+    st.markdown(
+        "- 🔊 Interacción por voz y sonido\n"
+        "- 🌡️ Análisis ambiental inteligente\n"
+        "- 💬 Comunicación emocional asistida\n"
+        "- 📊 Visualización de datos y desarrollo"
+    )
+
+# --- SECCIÓN PRINCIPAL DE CONTENIDO ---
+st.subheader("🌱 Experiencias Inteligentes")
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
- 
- st.subheader("Conversión de texto a voz")
- image = Image.open('txt_to_audio2.png')
- st.image(image, width=190)
- st.write("En la siguiente enlace usaremos una de las aplicaciones de Inteligencia Artificial") 
- url = "https://imultimod.streamlit.app/"
- st.write(f"Texto a voz: [Enlace]({url})")
+    st.subheader("🍼 Monitoreo Ambiental")
+    image = Image.open('bebeFrio.png')
+    st.image(image, width=220)
+    st.write("Sensores inteligentes que analizan la temperatura y humedad del entorno del bebé en tiempo real.")
+    st.button("Explorar función")
 
- st.subheader("Reconocimiento de Objetos")
- image = Image.open('txt_to_audio.png')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como se detectan objetos en Imágenes.") 
- url = "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
- st.write(f"YOLO: [Enlace]({url})")
+    st.subheader("💤 Detección de Estado Emocional")
+    image = Image.open('bebeCalor.png')
+    st.image(image, width=220)
+    st.write("Mediante IA, el sistema identifica patrones en el llanto y comportamiento para anticipar necesidades.")
+    st.button("Probar modelo")
 
- st.subheader("Entrenando Modelos")
- image = Image.open('OIG5.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como puedes usar tu modelo entrenado.") 
- url = "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/"
- st.write(f"YOLO: [Enlace]({url})")
+with col2:
+    st.subheader("💧 Salud y Bienestar")
+    image = Image.open('thermometer.png')
+    st.image(image, width=220)
+    st.write("BAE ayuda a detectar variaciones ambientales que podrían afectar la salud del bebé.")
+    st.button("Simular lectura")
 
-with col2: 
- st.subheader("Conversión de voz a texto")
- image = Image.open('OIG8.jpg')
- st.image(image, width=200)
- st.write("En la siguiente veremos una aplicación que usa la conversión de voz a texto.") 
- url = "https://traductor-ab0sp9f6fi.streamlit.app/"
- st.write(f"Voz a texto: [Enlace]({url})")
+    st.subheader("📊 Dashboard de Desarrollo")
+    image = Image.open('data_analisis.png')
+    st.image(image, width=220)
+    st.write("Visualiza los datos recolectados por los sensores y recibe alertas preventivas personalizadas.")
+    st.button("Ver dashboard")
 
- st.subheader("Análisis de Datos")
- image = Image.open('data_analisis.png')
- st.image(image, width=190)
- st.write("En la siguiente enlace veremos como se pueden analizar datos usando agentes.") 
- url = "https://asistpy-csv.streamlit.app/"
- st.write(f"Datos: [Enlace]({url})")
+with col3:
+    st.subheader("🤖 Blockchain y Seguridad")
+    image = Image.open('OIG4.jpg')
+    st.image(image, width=220)
+    st.write("Toda la información es encriptada y registrada en Polkadot, garantizando trazabilidad y privacidad.")
+    st.button("Conocer más")
 
- st.subheader("Trasnscriptor Audio y Video")
- image = Image.open('OIG3.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos como realizamos transcripciones de audio/video.") 
- url = "https://transcript-whisper.streamlit.app/"
- st.write(f"Transcriptor: [Enlace]({url})")
+    st.subheader("🎵 Comunicación Natural")
+    image = Image.open('txt_to_audio2.png')
+    st.image(image, width=220)
+    st.write("Convierte sonidos, palabras y emociones en interacciones seguras y cálidas con tu bebé.")
+    st.button("Explorar demo")
 
-
-with col3: 
- st.subheader("Generación en Contexto")
- image = Image.open('Chat_pdf.png')
- st.image(image, width=190)
- st.write("En la siguiente veremos una aplicación que usa RAG a partir de un documento (PDF).") 
- url = "https://chatpdf-cc.streamlit.app/"
- st.write(f"RAG: [Enlace]({url})")
-
- st.subheader("Análisis de Imagen")
- image = Image.open('OIG4.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos la capacidad de análisis en Imágenes.") 
- url = "https://vision2-gpt4o.streamlit.app/"
- st.write(f"Vision: [Enlace]({url})")
- 
- st.subheader("Sistema Ciberfísico")
- image = Image.open('OIG6.jpg')
- st.image(image, width=200)
- st.write("En la siguiente enlace veremos la capacidad de interacción con el mundo físico.") 
- url = "https://vision2-gpt4o.streamlit.app/"
- st.write(f"Vision: [Enlace]({url})")
+# --- PIE DE PÁGINA ---
+st.markdown("---")
+st.markdown(
+    "<p class='small-text' style='text-align:center;'>BAE © 2025 | Baby Ambient Environment • "
+    "Innovación para un futuro más saludable.</p>",
+    unsafe_allow_html=True
+)
 
 
