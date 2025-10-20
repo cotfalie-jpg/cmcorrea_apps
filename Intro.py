@@ -1,123 +1,103 @@
 import streamlit as st
 from PIL import Image
+from pathlib import Path
 
-# --- CONFIGURACIÓN INICIAL ---
-st.set_page_config(
-    page_title="BAE | Baby App Especializada",
-    page_icon="👶",
-    layout="wide",
-    initial_sidebar_state="expanded"
-)
+# ======== CONFIGURACIÓN GENERAL ========
+st.set_page_config(page_title="Bae App Portfolio", page_icon="👶", layout="wide")
 
-# --- ESTILO PERSONALIZADO (colores BAE) ---
+# Colores y estilo BAE (HTML + CSS)
 st.markdown("""
     <style>
         body {
             background-color: #F8FAFC;
             color: #2E2E2E;
-        }
-        [data-testid="stSidebar"] {
-            background-color: #F0F7FF;
-            border-right: 1px solid #CCE0FF;
-        }
-        h1, h2, h3, h4 {
-            color: #5271FF;
             font-family: 'Poppins', sans-serif;
         }
-        .stButton>button {
-            background-color: #5271FF;
-            color: white;
-            border-radius: 10px;
-            height: 2.5em;
-            width: 100%;
-            border: none;
+        .title {
+            text-align: center;
+            font-size: 2.2em;
+            font-weight: 600;
+            color: #6C63FF;
         }
-        .stButton>button:hover {
-            background-color: #6F8BFF;
+        .subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: #5C5C5C;
+            margin-bottom: 40px;
         }
-        .small-text {
-            font-size: 15px;
-            color: #666;
+        .app-box {
+            background: #FFFFFF;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+            transition: all 0.2s ease;
+        }
+        .app-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+        }
+        .app-title {
+            color: #FF7CA3;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        a {
+            color: #6C63FF;
+            text-decoration: none;
         }
     </style>
 """, unsafe_allow_html=True)
 
-# --- ENCABEZADO ---
-st.title("👶 BAE | Portafolio de Experiencias Inteligentes")
-st.markdown(
-    "### Una aplicación diseñada para el **cuidado y desarrollo de tu bebé**, "
-    "donde la tecnología se combina con el amor y la ciencia para ofrecer bienestar desde los primeros días de vida."
-)
+# ======== ENCABEZADO ========
+st.markdown('<p class="title">Portafolio de aplicaciones para el cuidado y desarrollo de tu bebé</p>', unsafe_allow_html=True)
+st.markdown('<p class="subtitle">Soluciones impulsadas por IA y tecnología para entender, cuidar y acompañar a los bebés del futuro.</p>', unsafe_allow_html=True)
 
-# --- SIDEBAR ---
+# ======== SIDEBAR ========
 with st.sidebar:
-    st.image("bebeFeliz.png", width=120)
-    st.subheader("Sobre BAE 💧")
+    st.image("https://i.imgur.com/jWcDQVG.png", width=150)
+    st.markdown("### 🌱 Aplicaciones con Inteligencia Artificial")
     st.write(
-        "BAE (Baby Ambient Environment) integra sensores IoT, inteligencia artificial y blockchain "
-        "para ofrecer un monitoreo ambiental seguro, ético y trazable que ayuda a cuidar la salud "
-        "de los bebés en sus primeros meses de vida."
+        "La inteligencia artificial impulsa la detección temprana, el análisis de datos y la "
+        "automatización del cuidado infantil. En este portafolio exploramos cómo BAE integra IA, "
+        "IoT y Blockchain para crear entornos más seguros y humanos."
     )
 
-    st.markdown("---")
-    st.write("**Explora nuestras experiencias digitales:**")
-    st.markdown(
-        "- 🔊 Interacción por voz y sonido\n"
-        "- 🌡️ Análisis ambiental inteligente\n"
-        "- 💬 Comunicación emocional asistida\n"
-        "- 📊 Visualización de datos y desarrollo"
-    )
+    st.markdown("#### 📘 Aprende más")
+    st.write("[Ir al sitio oficial de IA](https://sites.google.com/view/aplicacionesdeia/inicio)")
 
-# --- SECCIÓN PRINCIPAL DE CONTENIDO ---
-st.subheader("🌱 Experiencias Inteligentes")
-
+# ======== CONTENIDO PRINCIPAL ========
 col1, col2, col3 = st.columns(3)
 
-with col1:
-    st.subheader("🍼 Monitoreo Ambiental")
-    image = Image.open('bebeFrio.png')
-    st.image(image, width=220)
-    st.write("Sensores inteligentes que analizan la temperatura y humedad del entorno del bebé en tiempo real.")
-    st.button("Explorar función")
+apps = [
+    ("Monitoreo de Temperatura", "https://imultimod.streamlit.app/", "txt_to_audio2.png"),
+    ("Análisis de Sueño del Bebé", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
+    ("Reconocimiento de Llanto", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "txt_to_audio.png"),
+    ("Conversión de Voz a Texto", "https://traductor-ab0sp9f6fi.streamlit.app/", "OIG8.jpg"),
+    ("Detección de Movimiento", "https://vision2-gpt4o.streamlit.app/", "OIG4.jpg"),
+    ("Análisis de Video Familiar", "https://transcript-whisper.streamlit.app/", "OIG3.jpg"),
+    ("Control de Humedad y Temperatura", "https://chatpdf-cc.streamlit.app/", "Chat_pdf.png"),
+    ("Seguimiento del Crecimiento", "https://vision2-gpt4o.streamlit.app/", "OIG6.jpg"),
+    ("Predicción de Enfermedades", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "OIG5.jpg"),
+    ("Alertas Inteligentes", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
+    ("Generador de Rutinas", "https://imultimod.streamlit.app/", "txt_to_audio2.png"),
+    ("Asistente de Lactancia", "https://traductor-ab0sp9f6fi.streamlit.app/", "OIG8.jpg"),
+    ("Historias del Bebé (IA)", "https://chatpdf-cc.streamlit.app/", "Chat_pdf.png"),
+    ("Visualización de Datos IoT", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
+    ("Panel de Cuidados Blockchain", "https://vision2-gpt4o.streamlit.app/", "OIG4.jpg"),
+]
 
-    st.subheader("💤 Detección de Estado Emocional")
-    image = Image.open('bebeCalor.png')
-    st.image(image, width=220)
-    st.write("Mediante IA, el sistema identifica patrones en el llanto y comportamiento para anticipar necesidades.")
-    st.button("Probar modelo")
+# ======== DISTRIBUCIÓN ========
+columns = [col1, col2, col3]
 
-with col2:
-    st.subheader("💧 Salud y Bienestar")
-    image = Image.open('thermometer.png')
-    st.image(image, width=220)
-    st.write("BAE ayuda a detectar variaciones ambientales que podrían afectar la salud del bebé.")
-    st.button("Simular lectura")
-
-    st.subheader("📊 Dashboard de Desarrollo")
-    image = Image.open('data_analisis.png')
-    st.image(image, width=220)
-    st.write("Visualiza los datos recolectados por los sensores y recibe alertas preventivas personalizadas.")
-    st.button("Ver dashboard")
-
-with col3:
-    st.subheader("🤖 Blockchain y Seguridad")
-    image = Image.open('OIG4.jpg')
-    st.image(image, width=220)
-    st.write("Toda la información es encriptada y registrada en Polkadot, garantizando trazabilidad y privacidad.")
-    st.button("Conocer más")
-
-    st.subheader("🎵 Comunicación Natural")
-    image = Image.open('txt_to_audio2.png')
-    st.image(image, width=220)
-    st.write("Convierte sonidos, palabras y emociones en interacciones seguras y cálidas con tu bebé.")
-    st.button("Explorar demo")
-
-# --- PIE DE PÁGINA ---
-st.markdown("---")
-st.markdown(
-    "<p class='small-text' style='text-align:center;'>BAE © 2025 | Baby Ambient Environment • "
-    "Innovación para un futuro más saludable.</p>",
-    unsafe_allow_html=True
-)
-
+for i, (title, url, img_file) in enumerate(apps):
+    with columns[i % 3]:
+        st.markdown(f"<div class='app-box'><div class='app-title'>{title}</div>", unsafe_allow_html=True)
+        try:
+            image = Image.open(Path(img_file))
+            st.image(image, use_column_width=True)
+        except:
+            st.image("https://via.placeholder.com/200x150.png?text=Bae+App", use_column_width=True)
+        st.write(f"[Abrir aplicación]({url})")
+        st.markdown("</div>", unsafe_allow_html=True)
 
