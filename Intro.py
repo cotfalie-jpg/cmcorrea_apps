@@ -2,92 +2,111 @@ import streamlit as st
 from PIL import Image
 from pathlib import Path
 
-# ======== CONFIGURACIÓN GENERAL ========
-st.set_page_config(page_title="Bae App Portfolio", page_icon="👶", layout="wide")
+# ===== CONFIGURACIÓN GENERAL =====
+st.set_page_config(page_title="Portafolio BAE", page_icon="👶", layout="wide")
 
-# Colores y estilo BAE (HTML + CSS)
-st.markdown("""
+# ===== COLORES BAE =====
+COLOR_PRIMARIO = "#DD8E6B"  # melocotón
+COLOR_SECUNDARIO = "#F0D192"  # fondo crema
+COLOR_ACENTO = "#FFF2C3"  # amarillo pálido
+COLOR_SUAVE = "#C6E2E3"  # azul agua
+
+# ===== ESTILOS CSS =====
+st.markdown(f"""
     <style>
-        body {
-            background-color: #F8FAFC;
+        body {{
+            background-color: {COLOR_SECUNDARIO};
             color: #2E2E2E;
             font-family: 'Poppins', sans-serif;
-        }
-        .title {
+        }}
+        .header {{
             text-align: center;
-            font-size: 2.2em;
-            font-weight: 600;
-            color: #6C63FF;
-        }
-        .subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #5C5C5C;
-            margin-bottom: 40px;
-        }
-        .app-box {
-            background: #FFFFFF;
+            padding: 30px 0 10px 0;
+        }}
+        .header h1 {{
+            font-size: 2.8em;
+            font-weight: 700;
+            color: {COLOR_PRIMARIO};
+            margin-bottom: 5px;
+        }}
+        .header h3 {{
+            font-size: 1.3em;
+            color: #5A5A5A;
+            margin-bottom: 25px;
+        }}
+        .app-box {{
+            background: #FFF8EA;
             border-radius: 20px;
             padding: 20px;
-            box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
             margin-bottom: 25px;
-            transition: all 0.2s ease;
-        }
-        .app-box:hover {
+            border-left: 10px solid {COLOR_PRIMARIO};
+            transition: all 0.25s ease;
+        }}
+        .app-box:hover {{
             transform: scale(1.02);
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
-        }
-        .app-title {
-            color: #FF7CA3;
-            font-size: 1.1em;
+            box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+        }}
+        .app-title {{
+            color: {COLOR_PRIMARIO};
+            font-size: 1.3em;
             font-weight: 600;
-        }
-        a {
-            color: #6C63FF;
-            text-decoration: none;
-        }
+            margin-bottom: 10px;
+        }}
+        .stMarkdown a {{
+            color: {COLOR_SUAVE};
+        }}
+        .sidebar .sidebar-content {{
+            background-color: {COLOR_ACENTO};
+        }}
     </style>
 """, unsafe_allow_html=True)
 
-# ======== ENCABEZADO ========
-st.markdown('<p class="title">Portafolio de aplicaciones para el cuidado y desarrollo de tu bebé</p>', unsafe_allow_html=True)
-st.markdown('<p class="subtitle">Soluciones impulsadas por IA y tecnología para entender, cuidar y acompañar a los bebés del futuro.</p>', unsafe_allow_html=True)
+# ===== ENCABEZADO =====
+with st.container():
+    st.markdown('<div class="header">', unsafe_allow_html=True)
+    # Aquí puedes reemplazar el nombre del archivo por tu logo real
+    st.image("logo_bae.png", width=140)  
+    st.markdown("""
+        <h1>Portafolio BAE</h1>
+        <h3>Aplicaciones para el cuidado y desarrollo de tu bebé</h3>
+    """, unsafe_allow_html=True)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-# ======== SIDEBAR ========
+# ===== SIDEBAR =====
 with st.sidebar:
-    st.image("https://i.imgur.com/jWcDQVG.png", width=150)
-    st.markdown("### 🌱 Aplicaciones con Inteligencia Artificial")
+    st.image("logo_bae.png", width=120)
+    st.markdown(f"### 🌸 Aplicaciones con Inteligencia Artificial")
     st.write(
-        "La inteligencia artificial impulsa la detección temprana, el análisis de datos y la "
-        "automatización del cuidado infantil. En este portafolio exploramos cómo BAE integra IA, "
-        "IoT y Blockchain para crear entornos más seguros y humanos."
+        "BAE combina inteligencia artificial, IoT y blockchain para crear entornos más seguros, "
+        "humanos y adaptativos para los bebés. Aquí encontrarás las herramientas que impulsan el "
+        "cuidado inteligente desde los primeros días de vida."
     )
 
-    st.markdown("#### 📘 Aprende más")
-    st.write("[Ir al sitio oficial de IA](https://sites.google.com/view/aplicacionesdeia/inicio)")
+    st.markdown(f"#### 💡 Aprende más")
+    st.write("[Explora más herramientas IA](https://sites.google.com/view/aplicacionesdeia/inicio)")
 
-# ======== CONTENIDO PRINCIPAL ========
+# ===== CONTENIDO PRINCIPAL =====
 col1, col2, col3 = st.columns(3)
 
 apps = [
-    ("Monitoreo de Temperatura", "https://imultimod.streamlit.app/", "txt_to_audio2.png"),
-    ("Análisis de Sueño del Bebé", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
-    ("Reconocimiento de Llanto", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "txt_to_audio.png"),
-    ("Conversión de Voz a Texto", "https://traductor-ab0sp9f6fi.streamlit.app/", "OIG8.jpg"),
-    ("Detección de Movimiento", "https://vision2-gpt4o.streamlit.app/", "OIG4.jpg"),
-    ("Análisis de Video Familiar", "https://transcript-whisper.streamlit.app/", "OIG3.jpg"),
-    ("Control de Humedad y Temperatura", "https://chatpdf-cc.streamlit.app/", "Chat_pdf.png"),
-    ("Seguimiento del Crecimiento", "https://vision2-gpt4o.streamlit.app/", "OIG6.jpg"),
-    ("Predicción de Enfermedades", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "OIG5.jpg"),
-    ("Alertas Inteligentes", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
-    ("Generador de Rutinas", "https://imultimod.streamlit.app/", "txt_to_audio2.png"),
-    ("Asistente de Lactancia", "https://traductor-ab0sp9f6fi.streamlit.app/", "OIG8.jpg"),
-    ("Historias del Bebé (IA)", "https://chatpdf-cc.streamlit.app/", "Chat_pdf.png"),
-    ("Visualización de Datos IoT", "https://asistpy-csv.streamlit.app/", "data_analisis.png"),
-    ("Panel de Cuidados Blockchain", "https://vision2-gpt4o.streamlit.app/", "OIG4.jpg"),
+    ("Monitoreo de Temperatura", "https://imultimod.streamlit.app/", "1.png"),
+    ("Análisis de Sueño del Bebé", "https://asistpy-csv.streamlit.app/", "2.png"),
+    ("Reconocimiento de Llanto", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "3.png"),
+    ("Conversión de Voz a Texto", "https://traductor-ab0sp9f6fi.streamlit.app/", "4.png"),
+    ("Detección de Movimiento", "https://vision2-gpt4o.streamlit.app/", "5.png"),
+    ("Análisis de Video Familiar", "https://transcript-whisper.streamlit.app/", "6.png"),
+    ("Control Ambiental", "https://chatpdf-cc.streamlit.app/", "7.png"),
+    ("Seguimiento del Crecimiento", "https://vision2-gpt4o.streamlit.app/", "8.png"),
+    ("Predicción de Enfermedades", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "9.png"),
+    ("Alertas Inteligentes", "https://asistpy-csv.streamlit.app/", "10.png"),
+    ("Generador de Rutinas", "https://imultimod.streamlit.app/", "11.png"),
+    ("Asistente de Lactancia", "https://traductor-ab0sp9f6fi.streamlit.app/", "12.png"),
+    ("Tablero de historias Bae", "https://sturdy-meme-q7574vwg6754c65q5-8501.app.github.dev/", "13.png"),
+    ("Visualización IoT", "https://asistpy-csv.streamlit.app/", "14.png"),
+    ("Panel Blockchain BAE", "https://vision2-gpt4o.streamlit.app/", "15.png"),
 ]
 
-# ======== DISTRIBUCIÓN ========
 columns = [col1, col2, col3]
 
 for i, (title, url, img_file) in enumerate(apps):
@@ -100,4 +119,3 @@ for i, (title, url, img_file) in enumerate(apps):
             st.image("https://via.placeholder.com/200x150.png?text=Bae+App", use_column_width=True)
         st.write(f"[Abrir aplicación]({url})")
         st.markdown("</div>", unsafe_allow_html=True)
-
