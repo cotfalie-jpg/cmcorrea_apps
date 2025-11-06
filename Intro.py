@@ -90,23 +90,22 @@ with st.sidebar:
 col1, col2, col3 = st.columns(3)
 
 apps = [
-    ("Monitoreo de Temperatura", "https://imultimod.streamlit.app/", "1.png"),
-    ("Análisis de Sueño del Bebé", "https://asistpy-csv.streamlit.app/", "2.png"),
-    ("Reconocimiento de Llanto", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "3.png"),
-    ("Conversión de Voz a Texto", "https://traductor-ab0sp9f6fi.streamlit.app/", "4.png"),
-    ("Detección de Movimiento", "https://vision2-gpt4o.streamlit.app/", "5.png"),
-    ("Análisis de Video Familiar", "https://transcript-whisper.streamlit.app/", "6.png"),
-    ("Control Ambiental", "https://chatpdf-cc.streamlit.app/", "7.png"),
-    ("Seguimiento del Crecimiento", "https://vision2-gpt4o.streamlit.app/", "8.png"),
-    ("Predicción de Enfermedades", "https://xn3pg24ztuv6fdiqon8qn3.streamlit.app/", "9.png"),
-    ("Alertas Inteligentes", "https://asistpy-csv.streamlit.app/", "10.png"),
+    ("Introducción a Bae", "https://n3qduxtjtgbzxps9vdppnw.streamlit.app/", "1.png"),
+    ("Audios con cuentos para Bebé", "https://texto-a-voz-36cpsnzbwwjklgy9kjvhta.streamlit.app/", "2.png"),
+    ("Reconocimiento de Diagnostico", "https://b4xnfch5ocmgrjdhz3grjs.streamlit.app/", "3.png"),
+    ("Conversión de Voz a Texto", "https://chatpdf-crxyojkks8b3scte2r4aml.streamlit.app/", "4.png"),
+    ("Detección de Movimiento", "https://characters-brpc4s4yb04.streamlit.app/", "5.png"),
+    ("Análisis por voz", "https://znfsrrvdas34igywkpvasm.streamlit.app/", "6.png"),
+    ("Aprendiendo los Numeros", "https://nele77pi8emynduggzai45.streamlit.app/", "7.png"),
+    ("BAE OCR Audio", "https://ocr-audio-f2rmevcnhuomksuamepdjm.streamlit.app/", "8.png"),
+    ("Predicción de Enfermedades", "https://recepmqtt-hhs6p59arcbxmww82fyab9.streamlit.app/", "9.png"),
+    ("Alertas Inteligentes", "https://tdfesp-oe3hp9zkmc4qhst8plnoda.streamlit.app/", "10.png"),
     ("Generador de Rutinas", "https://imultimod.streamlit.app/", "11.png"),
     ("Asistente de Lactancia", "https://traductor-ab0sp9f6fi.streamlit.app/", "12.png"),
-    ("Tablero de historias Bae", "https://sturdy-meme-q7574vwg6754c65q5-8501.app.github.dev/", "13.png"),
-    ("Visualización IoT", "https://asistpy-csv.streamlit.app/", "14.png"),
+    ("Tablero de historias Bae", "https://tactil-bgolrmbhdgvokrtstuvmvc.streamlit.app/", "13.png"),
+    ("Visualización IoT", "https://yolov5-54fvqmwgbihxqpptfp75ml.streamlit.app/", "14.png"),
     ("Panel Blockchain BAE", "https://vision2-gpt4o.streamlit.app/", "15.png"),
 ]
-
 columns = [col1, col2, col3]
 
 for i, (title, url, img_file) in enumerate(apps):
